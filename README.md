@@ -77,19 +77,8 @@ The Flask app will run at http://127.0.0.1:5000
 - requests (Python library)
 - Tkinter (usually comes with Python)
 
-## 📷 Screenshots
-
-You can add screenshots here (e.g., .png files):
-
-- Login Page  
-- Admin Dashboard  
-- Student Dashboard  
-- Event Creation Form
-
 ## 🤝 Contributing
 
 Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to improve.
 
-## 📃 License
 
-This project is licensed under the MIT License.
