@@ -19,7 +19,7 @@ Session(app)  # Initialize Flask-SessionSession(app)  # Initialize Flask-Session
 # Register Blueprints
 app.register_blueprint(auth, url_prefix='/auth')
 app.register_blueprint(event_blueprint, url_prefix='/event')
-app.register_blueprint(Management_blueprint, url_prefix='/management')
+app.register_blueprint(Management_blueprint, url_prefix='/management')  
 
 if __name__ == "__main__":
-    app.run(debug=True)  # Run the Flask app in debug mode
+    app.run( host="0.0.0.0",port=5000,debug=True)  # Run the Flask app in debug mode

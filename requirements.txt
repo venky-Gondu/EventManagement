@@ -1,0 +1,8 @@
+Flask>=2.3
+flask-cors
+flask-session
+requests==2.31.0
+psycopg2-binary==2.9.6
+Werkzeug==2.3.6
+Flask-Cors==3.0.10
+python-dotenv==1.0.0

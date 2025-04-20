@@ -61,7 +61,7 @@ class EventManagementApp:
             messagebox.showerror("Error", "All fields are required")
             return
 
-        response = requests.post(f"{BASE_URL}/auth/login", json={
+        with requests.Session() as session:
             "username": username,
             "password": password
         })

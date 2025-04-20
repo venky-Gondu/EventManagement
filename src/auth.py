@@ -24,6 +24,8 @@ def register_admin():
 
     hashed_password = hash_password(password)
 
+    conn = None
+    cursor = None
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -31,11 +33,13 @@ def register_admin():
                        (user_id, username, user_role, hashed_password))
         conn.commit()
         return jsonify({"message": "Admin registered successfully"}), 201
-    except psycopg2.Error as err:
-        return jsonify({"error": str(err)}), 500
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
     finally:
-        cursor.close()
-        conn.close()
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
 @auth.route('/register/student', methods=['POST'])
 def register_student():
@@ -113,6 +117,8 @@ def login_user():
     if not all([username, password]):
         return jsonify({"error": "Missing username or password"}), 400
 
+    conn = None
+    cursor = None
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -125,9 +131,13 @@ def login_user():
             return jsonify({"message": "Login successful", "user_id": user[0], "role": user[1]}), 200
         else:
             return jsonify({"error": "Invalid credentials"}), 401
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
     finally:
-        cursor.close()
-        conn.close()
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
 @auth.route('/logout', methods=['POST'])
 def logout_user():
