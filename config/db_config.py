@@ -9,6 +9,7 @@ load_dotenv()
 def get_db_connection():
     try:
         connection = psycopg2.connect(
+            #host=localhost,  # Use this to connect to the local PostgreSQL server
             host="host.docker.internal",  # Use this to connect to the host machine's database
             database=os.getenv("DB_NAME"),
             user="postgres",
